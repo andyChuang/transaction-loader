@@ -46,8 +46,9 @@
     <Compile Include="ConverterFactory.cs" />
     <Compile Include="CsvConverter.cs" />
     <Compile Include="CyberMarsConverter.cs" />
-    <Compile Include="CyberMarsFormatLength.cs" />
+    <Compile Include="CyberMarsFormat.cs" />
     <Compile Include="FileReadService.cs" />
+    <Compile Include="FormatterService.cs" />
     <Compile Include="IConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

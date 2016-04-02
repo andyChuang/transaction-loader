@@ -18,11 +18,13 @@ namespace TransactionLoader
         {
             try
             {
-                return ConverterFactory.Instance.GetConverter(filePath).Convert();
+                List<Transaction> result = ConverterFactory.Instance.GetConverter(filePath).Convert();
+                return result;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ReadKey();
                 return null;
             }
         }

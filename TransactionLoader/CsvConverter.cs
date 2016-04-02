@@ -20,9 +20,19 @@ namespace TransactionLoader
             return null;
         }
 
-        public void Validate()
+        public void Validate(string data)
         {
             return;
+        }
+
+        public List<string> Parse(string data)
+        {
+            return null;
+        }
+
+        public Transaction GetTransaction(List<string> dataList)
+        {
+            return null;
         }
     }
 }

@@ -10,7 +10,8 @@ namespace TransactionLoader
     {
         string filePath { get; set; }
         List<Transaction> Convert();
-        void Validate();
-
+        void Validate(string data);
+        List<string> Parse(string data);
+        Transaction GetTransaction(List<string> dataList);
     }
 }
