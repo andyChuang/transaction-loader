@@ -41,8 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardType.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="ConverterFactory.cs" />
+    <Compile Include="CsvConverter.cs" />
+    <Compile Include="CyberMarsConverter.cs" />
+    <Compile Include="CyberMarsFormatLength.cs" />
+    <Compile Include="FileReadService.cs" />
+    <Compile Include="IConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionLoader.cs" />
+    <Compile Include="TransType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
