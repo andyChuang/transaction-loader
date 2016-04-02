@@ -21,19 +21,34 @@ namespace TransactionLoader
             }
         }
 
+        /// <summary>
+        /// Get IConverter by filepath
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public IConverter GetConverter(string filePath)
-        { 
-            switch (ParseExtName(filePath))
+        {
+            string extName = ParseExtName(filePath).ToUpper();
+
+            if (extName==BillingFileExtName.CHAR.ToString())
             {
-                case "char":
-                    return new CyberMarsConverter(filePath);
-                case "csv":
-                    return new CsvConverter(filePath);
-                default:
-                    throw new ArgumentException("Unsupported format.");
+                return new CyberMarsConverter(filePath);
+            }
+            else if (extName == BillingFileExtName.CSV.ToString())
+            {
+                return new CsvConverter(filePath);
+            }
+            else
+            {
+                throw new ArgumentException("Unsupported format.");
             }
         }
 
+        /// <summary>
+        /// Parse extension name of file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         private string ParseExtName(string filePath)
         {
             var tmp = filePath.LastIndexOf('.');

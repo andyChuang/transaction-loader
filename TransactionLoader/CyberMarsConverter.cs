@@ -20,10 +20,15 @@ namespace TransactionLoader
             string[] data = FileReadService.Instance.ReadTextFile(this.filePath);
             List<Transaction> transList = new List<Transaction>();
 
+            if (data.Length == 0)
+            {
+                throw new Exception("Empty file.");
+            }
+
             foreach (string dataUnit in data)
             {
                 this.Validate(dataUnit);
-                List<string> dataList = Parse(dataUnit);
+                List<string> dataList = Parse(dataUnit) as List<string>;
                 transList.Add(this.GetTransaction(dataList));
             }
             return transList;
@@ -38,7 +43,7 @@ namespace TransactionLoader
             return;
         }
 
-        public List<string> Parse(string data)
+        public Object Parse(string data)
         {
             List<string> dataList = new List<string>();
             dataList.Add(data.Substring(CyberMarsFormat.SEQ_START, CyberMarsFormat.SEQ_LENGTH));
@@ -53,8 +58,9 @@ namespace TransactionLoader
             return dataList;
         }
 
-        public Transaction GetTransaction(List<string> dataList)
+        public Transaction GetTransaction(Object dataListObj)
         {
+            List<string> dataList = (List<string>)dataListObj;
             Transaction newTrans = new Transaction();
             // SEQ
             newTrans.SEQ = dataList[0];
@@ -80,7 +86,7 @@ namespace TransactionLoader
             // Transaction Amount
             try
             {
-                newTrans.TransactionAmount = FormatterService.StringToDecimal(dataList[5], 2);
+                newTrans.TransactionAmount = FormatterService.Instance.StringToDecimal(dataList[5], 2);
             }
             catch (FormatException)
             {
@@ -89,7 +95,7 @@ namespace TransactionLoader
             // Transaction Date
             try
             {
-                newTrans.TransactionDate = FormatterService.StringToDate(dataList[6]);
+                newTrans.TransactionDate = FormatterService.Instance.StringToDate(dataList[6]);
             }
             catch (FormatException)
             {
@@ -98,7 +104,7 @@ namespace TransactionLoader
             // Transaction Time
             try
             {
-                newTrans.TransactionTime = FormatterService.StringToTime(dataList[7]);
+                newTrans.TransactionTime = FormatterService.Instance.StringToTime(dataList[7]);
             }
             catch (FormatException)
             {

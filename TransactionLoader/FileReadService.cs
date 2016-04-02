@@ -29,6 +29,7 @@ namespace TransactionLoader
 
         public Byte[] ReadBytesFile(string filePath)
         {
+            // TODO: Implement it
             return null;
         }
     }

@@ -8,16 +8,29 @@ namespace TransactionLoader
 {
     class FormatterService
     {
-        public static decimal StringToDecimal(string amount, int decimalPlaces)
+        private static FormatterService instance = new FormatterService();
+        private FormatterService() { }
+        public static FormatterService Instance
         {
-            amount = TrimZeroPadding(amount);
+            get
+            {
+                return instance;
+            }
+            set
+            { 
+            }
+        }
+
+        public decimal StringToDecimal(string amount, int decimalPlaces)
+        {
+            amount = TrimPrefixZeroPadding(amount);
             string integerPart = amount.Substring(0, amount.Length - decimalPlaces);
             string decimalPart = amount.Substring(amount.Length - decimalPlaces, decimalPlaces);
             string newDecimal = integerPart + "." + decimalPart;
             return Decimal.Parse(newDecimal);
         }
 
-        public static DateTime StringToDate(string dateTime)
+        public DateTime StringToDate(string dateTime)
         {
             string year = dateTime.Substring(0, 4);
             string month = dateTime.Substring(4, 2);
@@ -26,7 +39,7 @@ namespace TransactionLoader
             return Convert.ToDateTime(newDateTime);
         }
 
-        public static DateTime StringToTime(string dateTime)
+        public DateTime StringToTime(string dateTime)
         {
             string hour = dateTime.Substring(0, 2);
             string minute = dateTime.Substring(2, 2);
@@ -35,7 +48,7 @@ namespace TransactionLoader
             return Convert.ToDateTime(newDateTime);
         }
 
-        public static string TrimZeroPadding(string data)
+        private string TrimPrefixZeroPadding(string data)
         {
             return data.TrimStart(new char[] { '0' });
         }
