@@ -24,7 +24,15 @@ namespace TransactionLoader
 
         public string[] ReadTextFile(string filePath)
         {
-            return System.IO.File.ReadAllLines(@filePath);
+            try
+            {
+                string[] result = System.IO.File.ReadAllLines(@filePath);
+                return result;
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new Exception("Billing file not found.");
+            }
         }
 
         public Byte[] ReadBytesFile(string filePath)

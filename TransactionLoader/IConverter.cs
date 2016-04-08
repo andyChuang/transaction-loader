@@ -10,8 +10,5 @@ namespace TransactionLoader
     {
         string filePath { get; set; }
         List<Transaction> Convert();
-        void Validate(string data);
-        Object Parse(string data);
-        Transaction GetTransaction(Object dataList);
     }
 }
