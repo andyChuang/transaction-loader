@@ -54,7 +54,6 @@
     <Compile Include="IConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultSender.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="TransactionLoader.cs" />
     <Compile Include="TransType.cs" />
