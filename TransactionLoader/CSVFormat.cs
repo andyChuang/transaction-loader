@@ -8,12 +8,11 @@ namespace TransactionLoader
 {
     class CSVFormat
     {
-        static public string TRANSTYPE_SALE = "5";
-        static public string TRANSTYPE_REFUND = "6";
-
-        static public string CARDTYPE_JCB = "J";
-        static public string CARDTYPE_VISA = "V";
-        static public string CARDTYPE_MASTER = "M";
-
+        public static string TRANSTYPE_SALE = "5";
+        public static string TRANSTYPE_REFUND = "6";
+               
+        public static string CARDTYPE_JCB = "J";
+        public static string CARDTYPE_VISA = "V";
+        public static string CARDTYPE_MASTER = "M";
     }
 }

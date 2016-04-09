@@ -28,13 +28,13 @@ namespace TransactionLoader
             foreach (string dataUnit in data)
             {
                 this.Validate(dataUnit);
-                List<string> dataList = Parse(dataUnit) as List<string>;
+                List<string> dataList = Parse(dataUnit);
                 transList.Add(this.GetTransaction(dataList));
             }
             return transList;
         }
 
-        public void Validate(string data)
+        private void Validate(string data)
         {
             if (data.Length != CyberMarsFormat.TOTAL_LENGTH)
             {
@@ -43,7 +43,7 @@ namespace TransactionLoader
             return;
         }
 
-        public Object Parse(string data)
+        private List<string> Parse(string data)
         {
             List<string> dataList = new List<string>();
             dataList.Add(data.Substring(CyberMarsFormat.SEQ_START, CyberMarsFormat.SEQ_LENGTH));
@@ -58,9 +58,8 @@ namespace TransactionLoader
             return dataList;
         }
 
-        public Transaction GetTransaction(Object dataListObj)
+        private Transaction GetTransaction(List<string> dataList)
         {
-            List<string> dataList = (List<string>)dataListObj;
             Transaction newTrans = new Transaction();
             // SEQ
             newTrans.SEQ = dataList[0];

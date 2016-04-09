@@ -32,13 +32,13 @@ namespace TransactionLoader
             foreach (string dataUnit in data)
             { 
                 this.Validate(dataUnit);
-                Dictionary<string, string> dataDict = Parse(dataUnit) as Dictionary<string, string>;
+                Dictionary<string, string> dataDict = Parse(dataUnit);
                 transList.Add(this.GetTransaction(dataDict));
             }
             return transList;
         }
 
-        public void Validate(string data)
+        private void Validate(string data)
         {
             string[] fields = data.Split(new char[] { ',' });
             if (fields.Length != headerRow.Length)
@@ -48,7 +48,7 @@ namespace TransactionLoader
             return;
         }
 
-        public Object Parse(string data)
+        private Dictionary<string, string> Parse(string data)
         {
             Dictionary<string, string> dataDict = new Dictionary<string, string>();
             string[] fields = data.Split(new char[]{','});
@@ -60,10 +60,8 @@ namespace TransactionLoader
             return dataDict;
         }
 
-        public Transaction GetTransaction(Object dataDictObj)
+        private Transaction GetTransaction(Dictionary<string, string> dataDict)
         {
-            Dictionary<string, string> dataDict = dataDictObj as Dictionary<string, string>;
-
             Transaction newTrans = new Transaction();
 
             try
