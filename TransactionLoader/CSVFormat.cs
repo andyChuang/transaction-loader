@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransactionLoader
 {
-    class CSVFormat
+    static class CSVFormat
     {
         public static readonly string TRANSTYPE_SALE = "5";
         public static readonly string TRANSTYPE_REFUND = "6";

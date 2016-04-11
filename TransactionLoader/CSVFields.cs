@@ -1,15 +1,15 @@
 ﻿namespace TransactionLoader
 {
-    public enum CSVFields
+    static class CSVFields
     {
-        DATA_SEQ,
-        TRANS_TYPE,
-        MERCHANT_ID,
-        CARD_NO,
-        EXPIRED_DATE,
-        TRANS_AMT,
-        TRANS_DATE,
-        TRANS_TIME,
-        CARD_TYPE
+        public static readonly string DATA_SEQ = "DATA_SEQ";
+        public static readonly string TRANS_TYPE = "TRANS_TYPE";
+        public static readonly string MERCHANT_ID = "MERCHANT_ID";
+        public static readonly string CARD_NO = "CARD_NO";
+        public static readonly string EXPIRED_DATE = "EXPIRED_DATE";
+        public static readonly string TRANS_AMT = "TRANS_AMT";
+        public static readonly string TRANS_DATE = "TRANS_DATE";
+        public static readonly string TRANS_TIME = "TRANS_TIME";
+        public static readonly string CARD_TYPE = "CARD_TYPE";
     }
 }

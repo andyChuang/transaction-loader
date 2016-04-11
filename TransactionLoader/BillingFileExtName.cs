@@ -1,6 +1,6 @@
 ﻿namespace TransactionLoader
 {
-    class BillingFileExtName
+    static class BillingFileExtName
     {
         public static readonly string CHAR = "CHAR";
         public static readonly string CSV = "CSV";

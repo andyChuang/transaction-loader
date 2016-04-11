@@ -67,13 +67,13 @@ namespace TransactionLoader
             try
             {
                 // SEQ
-                newTrans.SEQ = dataDict[CSVFields.DATA_SEQ.ToString()];
+                newTrans.SEQ = dataDict[CSVFields.DATA_SEQ];
                 // Transaction Type
-                if (dataDict[CSVFields.TRANS_TYPE.ToString()] == CSVFormat.TRANSTYPE_SALE)
+                if (dataDict[CSVFields.TRANS_TYPE] == CSVFormat.TRANSTYPE_SALE)
                 {
                     newTrans.TransactionType = TransType.SALE;
                 }
-                else if (dataDict[CSVFields.TRANS_TYPE.ToString()] == CSVFormat.TRANSTYPE_REFUND)
+                else if (dataDict[CSVFields.TRANS_TYPE] == CSVFormat.TRANSTYPE_REFUND)
                 {
                     newTrans.TransactionType = TransType.REFUND;
                 }
@@ -82,15 +82,15 @@ namespace TransactionLoader
                     throw new ArgumentException("Invalid transaction type.");
                 }
                 // Merchant Id
-                newTrans.MerchantId = dataDict[CSVFields.MERCHANT_ID.ToString()];
+                newTrans.MerchantId = dataDict[CSVFields.MERCHANT_ID];
                 // Card No
-                newTrans.CardNo = dataDict[CSVFields.CARD_NO.ToString()];
+                newTrans.CardNo = dataDict[CSVFields.CARD_NO];
                 // Expired Date
-                newTrans.ExpireDate = dataDict[CSVFields.EXPIRED_DATE.ToString()];
+                newTrans.ExpireDate = dataDict[CSVFields.EXPIRED_DATE];
                 // Transaction Amount
                 try
                 {
-                    newTrans.TransactionAmount = FormatterService.Instance.StringToDecimal(dataDict[CSVFields.TRANS_AMT.ToString()], 2);
+                    newTrans.TransactionAmount = FormatterService.Instance.StringToDecimal(dataDict[CSVFields.TRANS_AMT], 2);
                 }
                 catch (FormatException)
                 {
@@ -99,7 +99,7 @@ namespace TransactionLoader
                 // Transaction Date
                 try
                 {
-                    newTrans.TransactionDate = FormatterService.Instance.StringToDate(dataDict[CSVFields.TRANS_DATE.ToString()]);
+                    newTrans.TransactionDate = FormatterService.Instance.StringToDate(dataDict[CSVFields.TRANS_DATE]);
                 }
                 catch (FormatException)
                 {
@@ -108,26 +108,26 @@ namespace TransactionLoader
                 // Transaction Time
                 try
                 {
-                    newTrans.TransactionTime = FormatterService.Instance.StringToTime(dataDict[CSVFields.TRANS_TIME.ToString()]);
+                    newTrans.TransactionTime = FormatterService.Instance.StringToTime(dataDict[CSVFields.TRANS_TIME]);
                 }
                 catch (FormatException)
                 {
                     throw new FormatException("Invalid transaction time");
                 }
                 // CardType
-                if (dataDict[CSVFields.CARD_TYPE.ToString()] == CSVFormat.CARDTYPE_MASTER)
+                if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_MASTER)
                 {
                     newTrans.CardType = CardType.MASTER;
                 }
-                else if (dataDict[CSVFields.CARD_TYPE.ToString()] == CSVFormat.CARDTYPE_VISA)
+                else if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_VISA)
                 {
                     newTrans.CardType = CardType.VISA;
                 }
-                else if (dataDict[CSVFields.CARD_TYPE.ToString()] == CSVFormat.CARDTYPE_JCB)
+                else if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_JCB)
                 {
                     newTrans.CardType = CardType.JCB;
                 }
-                else if (dataDict[CSVFields.CARD_TYPE.ToString()] == CSVFormat.CARDTYPE_UNIONPAY)
+                else if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_UNIONPAY)
                 {
                     newTrans.CardType = CardType.UNIONPAY;
                 }

@@ -46,15 +46,24 @@ namespace TransactionLoader
         private List<string> Parse(string data)
         {
             List<string> dataList = new List<string>();
-            dataList.Add(data.Substring(CyberMarsFormat.SEQ_START, CyberMarsFormat.SEQ_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.TRANSACTION_TYPE_START, CyberMarsFormat.TRANSACTION_TYPE_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.MERCHANT_ID_START, CyberMarsFormat.MERCHANT_ID_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.CARD_NO_START, CyberMarsFormat.CARD_NO_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.EXPIRE_DATE_START, CyberMarsFormat.EXPIRE_DATE_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.TRANSACTION_AMOUNT_START, CyberMarsFormat.TRANSACTION_AMOUNT_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.TRANSACTION_DATE_START, CyberMarsFormat.TRANSACTION_DATE_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.TRANSACTION_TIME_START, CyberMarsFormat.TRANSACTION_TIME_LENGTH));
-            dataList.Add(data.Substring(CyberMarsFormat.CARD_TYPE_START, CyberMarsFormat.CARD_TYPE_LENGTH));
+            dataList.Add(data.Substring(0, CyberMarsFormat.SEQ_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.SEQ_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.TRANSACTION_TYPE_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.TRANSACTION_TYPE_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.MERCHANT_ID_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.MERCHANT_ID_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.CARD_NO_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.CARD_NO_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.EXPIRE_DATE_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.EXPIRE_DATE_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.TRANSACTION_AMOUNT_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.TRANSACTION_AMOUNT_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.TRANSACTION_DATE_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.TRANSACTION_DATE_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.TRANSACTION_TIME_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.TRANSACTION_TIME_LENGTH);
+            dataList.Add(data.Substring(0, CyberMarsFormat.CARD_TYPE_LENGTH));
+            data = data.Remove(0, CyberMarsFormat.CARD_TYPE_LENGTH);
             return dataList;
         }
 

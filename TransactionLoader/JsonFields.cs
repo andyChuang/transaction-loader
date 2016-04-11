@@ -1,6 +1,6 @@
 ﻿namespace TransactionLoader
 {
-    class JsonFields
+    static class JsonFields
     {
         public static readonly string DATA_SEQ = "DataSeq";
         public static readonly string TRANS_TYPE = "TransactionType";

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransactionLoader
 {
-    class CyberMarsFormat
+    static class CyberMarsFormat
     {
         public static readonly int TOTAL_LENGTH = 66;
 
@@ -27,15 +27,5 @@ namespace TransactionLoader
         public static readonly int TRANSACTION_DATE_LENGTH = 8;
         public static readonly int TRANSACTION_TIME_LENGTH = 6;
         public static readonly int CARD_TYPE_LENGTH = 1;
-
-        public static readonly int SEQ_START = 0;
-        public static readonly int TRANSACTION_TYPE_START = 8;
-        public static readonly int MERCHANT_ID_START = 9;
-        public static readonly int CARD_NO_START = 19;
-        public static readonly int EXPIRE_DATE_START = 35;
-        public static readonly int TRANSACTION_AMOUNT_START = 39;
-        public static readonly int TRANSACTION_DATE_START = 51;
-        public static readonly int TRANSACTION_TIME_START = 59;
-        public static readonly int CARD_TYPE_START = 65;
     }
 }

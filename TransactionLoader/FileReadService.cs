@@ -17,9 +17,6 @@ namespace TransactionLoader
             {
                 return instance;
             }
-            set 
-            { 
-            }
         }
 
         public string[] ReadTextFile(string filePath)

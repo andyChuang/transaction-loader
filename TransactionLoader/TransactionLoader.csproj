@@ -58,7 +58,6 @@
     <Compile Include="JsonConverter.cs" />
     <Compile Include="JsonFields.cs" />
     <Compile Include="JsonFormat.cs" />
-    <Compile Include="JsonRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transaction.cs" />
