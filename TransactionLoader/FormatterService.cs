@@ -16,9 +16,6 @@ namespace TransactionLoader
             {
                 return instance;
             }
-            set
-            { 
-            }
         }
 
         public decimal StringToDecimal(string amount, int decimalPlaces)

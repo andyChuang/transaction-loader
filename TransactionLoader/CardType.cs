@@ -4,6 +4,7 @@
     {
         MASTER,
         VISA,
-        JCB
+        JCB,
+        UNIONPAY
     }
 }

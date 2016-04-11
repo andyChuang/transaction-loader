@@ -16,9 +16,6 @@ namespace TransactionLoader
             {
                 return instance;
             }
-            set
-            { 
-            }
         }
 
         /// <summary>
@@ -37,6 +34,10 @@ namespace TransactionLoader
             else if (extName == BillingFileExtName.CSV.ToString())
             {
                 return new CsvConverter(filePath);
+            }
+            else if (extName == BillingFileExtName.JSON.ToString())
+            {
+                return new JsonConverter(filePath);
             }
             else
             {

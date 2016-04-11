@@ -122,6 +122,10 @@ namespace TransactionLoader
             {
                 newTrans.CardType = CardType.JCB;
             }
+            else if (dataList[8] == CyberMarsFormat.CARDTYPE_UNIONPAY)
+            {
+                newTrans.CardType = CardType.UNIONPAY;
+            }
             else
             {
                 throw new ArgumentException("Invalid card type.");

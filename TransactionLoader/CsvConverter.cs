@@ -127,6 +127,10 @@ namespace TransactionLoader
                 {
                     newTrans.CardType = CardType.JCB;
                 }
+                else if (dataDict[CSVFields.CARD_TYPE.ToString()] == CSVFormat.CARDTYPE_UNIONPAY)
+                {
+                    newTrans.CardType = CardType.UNIONPAY;
+                }
                 else
                 {
                     throw new ArgumentException("Invalid card type.");

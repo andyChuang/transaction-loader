@@ -8,7 +8,6 @@ namespace TransactionLoader
 {
     interface IConverter
     {
-        string filePath { get; set; }
         List<Transaction> Convert();
     }
 }
