@@ -27,5 +27,7 @@ namespace TransactionLoader
         public static readonly int TRANSACTION_DATE_LENGTH = 8;
         public static readonly int TRANSACTION_TIME_LENGTH = 6;
         public static readonly int CARD_TYPE_LENGTH = 1;
+
+        public static readonly string EXTNAME = "char";
     }
 }

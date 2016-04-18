@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace TransactionLoader
 {
@@ -25,24 +26,27 @@ namespace TransactionLoader
         /// <returns></returns>
         public IConverter GetConverter(string filePath)
         {
-            string extName = ParseExtName(filePath).ToUpper();
+            string extName = ParseExtName(filePath).ToLower();
 
-            if (extName==BillingFileExtName.CHAR.ToString())
+            var type = typeof(IConverter);
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p) && !p.IsInterface);
+            object converterInstance;
+            bool isExtNameMatched = false;
+
+            foreach (Type converterType in types)
             {
-                return new CyberMarsConverter(filePath);
+                converterInstance = Activator.CreateInstance(converterType, new object[] { filePath });
+                isExtNameMatched = (bool)converterType.InvokeMember("IsExtNameMatched", BindingFlags.InvokeMethod,
+                                        null, converterInstance, new object[] { extName });
+                if(isExtNameMatched)
+                {
+                    return converterInstance as IConverter;
+                }
             }
-            else if (extName == BillingFileExtName.CSV.ToString())
-            {
-                return new CsvConverter(filePath);
-            }
-            else if (extName == BillingFileExtName.JSON.ToString())
-            {
-                return new JsonConverter(filePath);
-            }
-            else
-            {
-                throw new ArgumentException("Unsupported format.");
-            }
+
+            throw new ArgumentException("Unsupported format.");
         }
 
         /// <summary>

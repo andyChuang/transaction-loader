@@ -9,5 +9,6 @@ namespace TransactionLoader
     interface IConverter
     {
         List<Transaction> Convert();
+        bool IsExtNameMatched(string inputExtName);
     }
 }

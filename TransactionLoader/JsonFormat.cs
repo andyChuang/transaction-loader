@@ -15,5 +15,7 @@ namespace TransactionLoader
         public static readonly string CARDTYPE_VISA = "VISA";
         public static readonly string CARDTYPE_MASTER = "MASTER";
         public static readonly string CARDTYPE_UNIONPAY = "UnionPay";
+
+        public static readonly string EXTNAME = "json";
     }
 }

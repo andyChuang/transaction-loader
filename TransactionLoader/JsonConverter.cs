@@ -11,10 +11,12 @@ namespace TransactionLoader
     class JsonConverter : IConverter
     {
         public string filePath { get; set; }
+        public string extName { get; set; }
 
         public JsonConverter(string filePath)
         {
             this.filePath = filePath;
+            this.extName = JsonFormat.EXTNAME;
         }
 
         public List<Transaction> Convert()
@@ -34,6 +36,11 @@ namespace TransactionLoader
                 transList.Add(this.GetTransaction(request));
             }
             return transList;
+        }
+
+        public bool IsExtNameMatched(string inputExtName)
+        {
+            return inputExtName == this.extName;
         }
 
         private Transaction GetTransaction(JObject request)

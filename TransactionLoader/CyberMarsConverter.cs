@@ -10,9 +10,12 @@ namespace TransactionLoader
     {
 
         public string filePath { get; set; }
+        public string extName { get; set; }
+
         public CyberMarsConverter(string filePath)
         {
             this.filePath = filePath;
+            this.extName = CyberMarsFormat.EXTNAME;
         }
 
         public List<Transaction> Convert()
@@ -32,6 +35,11 @@ namespace TransactionLoader
                 transList.Add(this.GetTransaction(dataList));
             }
             return transList;
+        }
+
+        public bool IsExtNameMatched(string inputExtName)
+        {
+            return inputExtName == this.extName;
         }
 
         private void Validate(string data)

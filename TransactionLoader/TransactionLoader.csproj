@@ -48,8 +48,8 @@
     <Compile Include="CardType.cs" />
     <Compile Include="ConverterFactory.cs" />
     <Compile Include="CsvConverter.cs" />
-    <Compile Include="CSVFields.cs" />
-    <Compile Include="CSVFormat.cs" />
+    <Compile Include="CsvFields.cs" />
+    <Compile Include="CsvFormat.cs" />
     <Compile Include="CyberMarsConverter.cs" />
     <Compile Include="CyberMarsFormat.cs" />
     <Compile Include="FileReadService.cs" />

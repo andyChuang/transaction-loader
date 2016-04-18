@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransactionLoader
 {
-    static class CSVFormat
+    static class CsvFormat
     {
         public static readonly string TRANSTYPE_SALE = "5";
         public static readonly string TRANSTYPE_REFUND = "6";
@@ -15,5 +15,7 @@ namespace TransactionLoader
         public static readonly string CARDTYPE_VISA = "V";
         public static readonly string CARDTYPE_MASTER = "M";
         public static readonly string CARDTYPE_UNIONPAY = "U";
+
+        public static readonly string EXTNAME = "csv";
     }
 }
