@@ -19,7 +19,7 @@ namespace TransactionLoader
             }
         }
 
-        public string[] ReadTextFile(string filePath)
+        public string[] ReadTextFileIntoStringArray(string filePath)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace TransactionLoader
             }
         }
 
-        public string ReadTextFileInOneString(string filePath)
+        public string ReadTextFileIntoOneString(string filePath)
         {
             try
             {
@@ -41,14 +41,8 @@ namespace TransactionLoader
             }
             catch (FileNotFoundException e)
             {
-                throw new Exception("Billing file not found.");
+                throw new Exception("Config file not found.");
             }
-        }
-
-        public Byte[] ReadBytesFile(string filePath)
-        {
-            // TODO: Implement it
-            return null;
         }
     }
 }

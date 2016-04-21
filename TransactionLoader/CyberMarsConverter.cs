@@ -17,7 +17,7 @@ namespace TransactionLoader
 
         public List<Transaction> Convert()
         {
-            string[] data = FileReadService.Instance.ReadTextFile(this.filePath);
+            string[] data = FileReadService.Instance.ReadTextFileIntoStringArray(this.filePath);
             List<Transaction> transList = new List<Transaction>();
 
             if (data.Length == 0)
