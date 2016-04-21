@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BillingFileExtName.cs" />
     <Compile Include="CardType.cs" />
+    <Compile Include="ConfigManager.cs" />
     <Compile Include="ConverterFactory.cs" />
     <Compile Include="CsvConverter.cs" />
     <Compile Include="CSVFields.cs" />
