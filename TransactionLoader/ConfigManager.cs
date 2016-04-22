@@ -36,7 +36,7 @@ namespace TransactionLoader
             }
             catch (Newtonsoft.Json.JsonSerializationException)
             {
-                throw new Exception("Invalid config.");
+                throw new CustomException("Invalid config.");
             }
         }
     }

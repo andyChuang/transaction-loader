@@ -23,7 +23,7 @@ namespace CyberMarsConverter
 
             if (data.Length == 0)
             {
-                throw new Exception("Empty file.");
+                throw new CustomException("Empty file.");
             }
 
             foreach (string dataUnit in data)
@@ -39,7 +39,7 @@ namespace CyberMarsConverter
         {
             if (data.Length != CyberMarsFormat.TOTAL_LENGTH)
             {
-                throw new ArgumentException("Invalid data length.");
+                throw new CustomException("Invalid data length.");
             }
             return;
         }
@@ -84,7 +84,7 @@ namespace CyberMarsConverter
             }
             else
             {
-                throw new ArgumentException("Invalid transaction type.");
+                throw new CustomException("Invalid transaction type.");
             }
             // Merchant Id
             newTrans.MerchantId = dataList[2];
@@ -99,7 +99,7 @@ namespace CyberMarsConverter
             }
             catch (FormatException)
             {
-                throw new FormatException("Invalid transaction amount");
+                throw new CustomException("Invalid transaction amount");
             }
             // Transaction Date
             try
@@ -108,7 +108,7 @@ namespace CyberMarsConverter
             }
             catch (FormatException)
             {
-                throw new FormatException("Invalid transaction date");
+                throw new CustomException("Invalid transaction date");
             }
             // Transaction Time
             try
@@ -117,7 +117,7 @@ namespace CyberMarsConverter
             }
             catch (FormatException)
             {
-                throw new FormatException("Invalid transaction time");
+                throw new CustomException("Invalid transaction time");
             }
             // CardType
             if(dataList[8]==CyberMarsFormat.CARDTYPE_MASTER)
@@ -138,7 +138,7 @@ namespace CyberMarsConverter
             }
             else
             {
-                throw new ArgumentException("Invalid card type.");
+                throw new CustomException("Invalid card type.");
             }
             return newTrans;
         }  

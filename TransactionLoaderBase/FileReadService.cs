@@ -28,7 +28,7 @@ namespace TransactionLoaderBase
             }
             catch (FileNotFoundException e)
             {
-                throw new Exception("Billing file not found.");
+                throw new CustomException("Billing file not found.");
             }
         }
 
@@ -39,13 +39,13 @@ namespace TransactionLoaderBase
                 string result = System.IO.File.ReadAllText(@filePath);
                 if (result.Length == 0)
                 {
-                    throw new Exception("Empty file.");
+                    throw new CustomException("Empty file.");
                 }
                 return result;
             }
             catch (FileNotFoundException e)
             {
-                throw new Exception("Config file not found.");
+                throw new CustomException("Config file not found.");
             }
         }
     }

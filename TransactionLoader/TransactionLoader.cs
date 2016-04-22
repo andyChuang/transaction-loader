@@ -24,23 +24,13 @@ namespace TransactionLoader
         {
             try
             {
-                List<Transaction> result = ConverterFactory.Instance.GetConverter(filePath).Convert();
-                
-                foreach (Transaction transaction in result)
-                {
-                    Console.WriteLine("SEQ: " + transaction.SEQ);
-                    Console.WriteLine("TransType: " + transaction.TransactionType);
-                    Console.WriteLine("MerchantId: " + transaction.MerchantId);
-                    Console.WriteLine("CardNo: " + transaction.CardNo);
-                    Console.WriteLine("ExpireDate: " + transaction.ExpireDate);
-                    Console.WriteLine("TransAmt: " + transaction.TransactionAmount);
-                    Console.WriteLine("TransDate: " + transaction.TransactionDate);
-                    Console.WriteLine("TransTime: " + transaction.TransactionTime);
-                    Console.WriteLine("CardType: " + transaction.CardType);
-                    Console.WriteLine("==================================");
-                }
+                return ConverterFactory.Instance.GetConverter(filePath).Convert();
+            }
+            catch (CustomException e)
+            {
+                e.WhatHappenedBaby();
                 Console.ReadKey();
-                return result;
+                return null;
             }
             catch (Exception e)
             {

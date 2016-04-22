@@ -24,7 +24,7 @@ namespace JsonConverter
 
             if (data.Length == 0)
             {
-                throw new Exception("Empty file.");
+                throw new CustomException("Empty file.");
             }
 
             List<Dictionary<string, string>> requests = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(data);
@@ -55,7 +55,7 @@ namespace JsonConverter
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid transaction type.");
+                    throw new CustomException("Invalid transaction type.");
                 }
                 // Merchant Id
                 newTrans.MerchantId = request[JsonFields.MERCHANT_ID];
@@ -67,7 +67,7 @@ namespace JsonConverter
                 decimal transAmt;
                 if (!Decimal.TryParse(request[JsonFields.TRANS_AMT], out transAmt))
                 {
-                    throw new FormatException("Invalid transaction amount");
+                    throw new CustomException("Invalid transaction amount");
                 }
                 newTrans.TransactionAmount = transAmt;
                 // Transaction Date
@@ -77,7 +77,7 @@ namespace JsonConverter
                 }
                 catch (FormatException)
                 {
-                    throw new FormatException("Invalid transaction date");
+                    throw new CustomException("Invalid transaction date");
                 }
                 // Transaction Time
                 try
@@ -86,7 +86,7 @@ namespace JsonConverter
                 }
                 catch (FormatException)
                 {
-                    throw new FormatException("Invalid transaction time");
+                    throw new CustomException("Invalid transaction time");
                 }
                 // CardType
                 string cardType = request[JsonFields.CARD_TYPE];
@@ -108,12 +108,12 @@ namespace JsonConverter
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid card type.");
+                    throw new CustomException("Invalid card type.");
                 }
             }
             catch (KeyNotFoundException)
-            { 
-                throw new KeyNotFoundException("Field not matched between file and code.");
+            {
+                throw new CustomException("Field not matched between file and code.");
             }
 
             return newTrans;

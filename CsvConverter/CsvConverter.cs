@@ -24,7 +24,7 @@ namespace CsvConverter
 
             if (data.Count == 0)
             {
-                throw new Exception("Empty file.");
+                throw new CustomException("Empty file.");
             }
             // Get header for fields
             headerRow = data[0].Split(new char[] { ',' });
@@ -44,7 +44,7 @@ namespace CsvConverter
             string[] fields = data.Split(new char[] { ',' });
             if (fields.Length != headerRow.Length)
             {
-                throw new IndexOutOfRangeException("Field count of header and data are not matched.");
+                throw new CustomException("Field count of header and data are not matched.");
             }
             return;
         }
@@ -80,7 +80,7 @@ namespace CsvConverter
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid transaction type.");
+                    throw new CustomException("Invalid transaction type.");
                 }
                 // Merchant Id
                 newTrans.MerchantId = dataDict[CsvFields.MERCHANT_ID];
@@ -95,7 +95,7 @@ namespace CsvConverter
                 }
                 catch (FormatException)
                 {
-                    throw new FormatException("Invalid transaction amount");
+                    throw new CustomException("Invalid transaction amount");
                 }
                 // Transaction Date
                 try
@@ -104,7 +104,7 @@ namespace CsvConverter
                 }
                 catch (FormatException)
                 {
-                    throw new FormatException("Invalid transaction date");
+                    throw new CustomException("Invalid transaction date");
                 }
                 // Transaction Time
                 try
@@ -113,7 +113,7 @@ namespace CsvConverter
                 }
                 catch (FormatException)
                 {
-                    throw new FormatException("Invalid transaction time");
+                    throw new CustomException("Invalid transaction time");
                 }
                 // CardType
                 if (dataDict[CsvFields.CARD_TYPE] == CsvFormat.CARDTYPE_MASTER)
@@ -134,12 +134,12 @@ namespace CsvConverter
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid card type.");
+                    throw new CustomException("Invalid card type.");
                 }
             }
             catch (KeyNotFoundException)
             {
-                throw new KeyNotFoundException("Missing fields from CSV file.");
+                throw new CustomException("Missing fields from CSV file.");
             }
             return newTrans;
         }

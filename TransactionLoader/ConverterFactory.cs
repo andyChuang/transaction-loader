@@ -35,17 +35,13 @@ namespace TransactionLoader
                 object[] converterParams = new object[] { filePath };
 
                 Type converterType = FindClass(converterName);
-                if (converterType == null)
-                {
-                    throw new NullReferenceException("Unsupported converter.");
-                }
                 return Activator.CreateInstance(converterType, converterParams) as IConverter;
             }
             catch (ArgumentException)
             {
-                throw new ArgumentException("Invalid config file path.");
+                throw new CustomException("Invalid config file path.");
             }
-            catch (NullReferenceException e)
+            catch (CustomException e)
             {
                 throw e;
             }
@@ -72,7 +68,7 @@ namespace TransactionLoader
                     
                     if (converterType.ToList().Count > 1)
                     {
-                        throw new Exception("Wrong design of converter component!");
+                        throw new CustomException("Wrong design of converter component!");
                     }
                     else if (converterType.ToList().Count == 1)
                     {
@@ -84,7 +80,7 @@ namespace TransactionLoader
                     continue; // 這個dll不能load或找不到半個適合的class就換下一個dll啊~
                 }
             }
-            return null;
+            throw new CustomException("Unsupported converter.");
         }
 
         /// <summary>
@@ -107,9 +103,9 @@ namespace TransactionLoader
             }
             catch (KeyNotFoundException)
             {
-                throw new KeyNotFoundException("Field name not matched between config file and code.");
+                throw new CustomException("Field name not matched between config file and code.");
             }
-            throw new Exception("Unsupported format.");
+            throw new CustomException("Unsupported format.");
         }
     }
 }
