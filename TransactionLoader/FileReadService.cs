@@ -37,6 +37,10 @@ namespace TransactionLoader
             try
             {
                 string result = System.IO.File.ReadAllText(@filePath);
+                if (result.Length == 0)
+                {
+                    throw new Exception("Empty file.");
+                }
                 return result;
             }
             catch (FileNotFoundException e)

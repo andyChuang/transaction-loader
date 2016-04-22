@@ -30,10 +30,6 @@ namespace TransactionLoader
             try
             {
                 string data = FileReadService.Instance.ReadTextFileIntoOneString(ConfigPath);
-                if (data == "")
-                {
-                    throw new Exception("Empty config file.");
-                }
                 List<Dictionary<string, string>> parsedData = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(data);
                 return parsedData;
             }

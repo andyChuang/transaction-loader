@@ -10,7 +10,7 @@ namespace TransactionLoader
     {
         static void Main(string[] args)
         {
-            var transcation = LoadTransactionsFromChargeFile("charge.json", "format.config");
+            var transcation = LoadTransactionsFromChargeFile("charge.csv", "format.config");
         }
 
         static public List<Transaction> LoadTransactionsFromChargeFile(string filePath, string configPath)
