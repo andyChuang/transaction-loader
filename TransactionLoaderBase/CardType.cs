@@ -1,4 +1,4 @@
-﻿namespace TransactionLoader
+﻿namespace TransactionLoaderBase
 {
     public enum CardType
     {

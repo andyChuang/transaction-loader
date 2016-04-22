@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransactionLoaderBase;
+using System.IO;
+using System.Reflection;
 
 namespace TransactionLoader
 {
@@ -25,30 +28,63 @@ namespace TransactionLoader
         /// <returns></returns>
         public IConverter GetConverter(string filePath)
         {
-            string extName = ParseExtName(filePath).ToLower();
-            string nameSpaceName = "TransactionLoader";
-            string converterName = GetConverterNameFromConfig(extName);
-            object[] converterParams = new object[] { filePath };
-
             try
             {
-                return  Activator.CreateInstance(Type.GetType(nameSpaceName + "." + converterName), converterParams) as IConverter;
+                string extName = Path.GetExtension(filePath).ToLower().Replace(".", "");
+                string converterName = GetConverterNameFromConfig(extName);
+                object[] converterParams = new object[] { filePath };
+
+                Type converterType = FindClass(converterName);
+                if (converterType == null)
+                {
+                    throw new NullReferenceException("Unsupported converter.");
+                }
+                return Activator.CreateInstance(converterType, converterParams) as IConverter;
             }
-            catch
-            { 
-                throw new Exception("Invalid converter name.");
+            catch (ArgumentException)
+            {
+                throw new ArgumentException("Invalid config file path.");
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unexpected error when creating converter instance.");
             }            
         }
 
-        /// <summary>
-        /// Parse extension name of file
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
-        private string ParseExtName(string filePath)
+        private Type FindClass(string converterName)
         {
-            var tmp = filePath.LastIndexOf('.');
-            return filePath.Substring(tmp + 1, filePath.Length - tmp - 1);
+            string[] assemblies = Directory.GetFiles(System.Environment.CurrentDirectory, "*.dll");
+            foreach (string assemblyPath in assemblies)
+            {
+                Type[] types = null;
+                try
+                {
+                    types = Assembly.LoadFrom(assemblyPath).GetTypes();
+                    var converterType = types.Where(t =>
+                        t.IsClass &&
+                        t.GetInterfaces().Contains(typeof(TransactionLoaderBase.IConverter)) &&
+                        t.Name.Equals(converterName)
+                    ).ToList();
+                    
+                    if (converterType.ToList().Count > 1)
+                    {
+                        throw new Exception("Wrong design of converter component!");
+                    }
+                    else if (converterType.ToList().Count == 1)
+                    {
+                        return converterType[0] as Type;
+                    }
+                }
+                catch (ArgumentNullException)
+                {
+                    continue; // 這個dll不能load或找不到半個適合的class就換下一個dll啊~
+                }
+            }
+            return null;
         }
 
         /// <summary>

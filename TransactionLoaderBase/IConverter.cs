@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransactionLoader
+namespace TransactionLoaderBase
 {
-    interface IConverter
+    public interface IConverter
     {
         List<Transaction> Convert();
     }

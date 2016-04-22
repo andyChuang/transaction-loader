@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6CFC02AB-BF02-4516-8062-88E4F63AB116}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{C26E3F1D-D94A-4842-A3E2-82EF18366C8B}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TransactionLoader</RootNamespace>
-    <AssemblyName>TransactionLoader</AssemblyName>
+    <RootNamespace>JsonConverter</RootNamespace>
+    <AssemblyName>JsonConverter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,15 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CsvConverter">
-      <HintPath>..\CsvConverter\bin\Debug\CsvConverter.dll</HintPath>
-    </Reference>
-    <Reference Include="CyberMarsConverter">
-      <HintPath>..\CyberMarsConverter\bin\Debug\CyberMarsConverter.dll</HintPath>
-    </Reference>
-    <Reference Include="JsonConverter">
-      <HintPath>..\JsonConverter\bin\Debug\JsonConverter.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -56,15 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillingFileExtName.cs" />
-    <Compile Include="ConfigManager.cs" />
-    <Compile Include="ConverterFactory.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="JsonConverter.cs" />
+    <Compile Include="JsonFields.cs" />
+    <Compile Include="JsonFormat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransactionLoader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

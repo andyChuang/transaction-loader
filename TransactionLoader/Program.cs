@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransactionLoaderBase;
 
 namespace TransactionLoader
 {
@@ -10,7 +11,7 @@ namespace TransactionLoader
     {
         static void Main(string[] args)
         {
-            var transcation = LoadTransactionsFromChargeFile("charge.csv", "format.config");
+            var transcation = LoadTransactionsFromChargeFile("charge.csv", "transactionLoader.config");
         }
 
         static public List<Transaction> LoadTransactionsFromChargeFile(string filePath, string configPath)

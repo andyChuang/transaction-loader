@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransactionLoader
+namespace CsvConverter
 {
-    static class CSVFormat
+    static class CsvFormat
     {
         public static readonly string TRANSTYPE_SALE = "5";
         public static readonly string TRANSTYPE_REFUND = "6";

@@ -1,6 +1,6 @@
-﻿namespace TransactionLoader
+﻿namespace CsvConverter
 {
-    static class CSVFields
+    static class CsvFields
     {
         public static readonly string DATA_SEQ = "DATA_SEQ";
         public static readonly string TRANS_TYPE = "TRANS_TYPE";

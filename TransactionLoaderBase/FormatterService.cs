@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransactionLoader
+namespace TransactionLoaderBase
 {
-    class FormatterService
+    public class FormatterService
     {
         private static FormatterService instance = new FormatterService();
         private FormatterService() { }

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace TransactionLoader
+namespace TransactionLoaderBase
 {
-    class FileReadService
+    public class FileReadService
     {
         private static FileReadService instance = new FileReadService();
         private FileReadService() { }

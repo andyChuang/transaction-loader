@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TransactionLoaderBase;
 
-
-namespace TransactionLoader
+namespace JsonConverter
 {
     class JsonConverter : IConverter
     {

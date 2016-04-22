@@ -1,4 +1,4 @@
-﻿namespace TransactionLoader
+﻿namespace JsonConverter
 {
     static class JsonFields
     {

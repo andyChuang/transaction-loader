@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransactionLoaderBase;
 
-namespace TransactionLoader
+namespace CsvConverter
 {
     class CsvConverter : IConverter
     {
@@ -67,13 +68,13 @@ namespace TransactionLoader
             try
             {
                 // SEQ
-                newTrans.SEQ = dataDict[CSVFields.DATA_SEQ];
+                newTrans.SEQ = dataDict[CsvFields.DATA_SEQ];
                 // Transaction Type
-                if (dataDict[CSVFields.TRANS_TYPE] == CSVFormat.TRANSTYPE_SALE)
+                if (dataDict[CsvFields.TRANS_TYPE] == CsvFormat.TRANSTYPE_SALE)
                 {
                     newTrans.TransactionType = TransType.SALE;
                 }
-                else if (dataDict[CSVFields.TRANS_TYPE] == CSVFormat.TRANSTYPE_REFUND)
+                else if (dataDict[CsvFields.TRANS_TYPE] == CsvFormat.TRANSTYPE_REFUND)
                 {
                     newTrans.TransactionType = TransType.REFUND;
                 }
@@ -82,15 +83,15 @@ namespace TransactionLoader
                     throw new ArgumentException("Invalid transaction type.");
                 }
                 // Merchant Id
-                newTrans.MerchantId = dataDict[CSVFields.MERCHANT_ID];
+                newTrans.MerchantId = dataDict[CsvFields.MERCHANT_ID];
                 // Card No
-                newTrans.CardNo = dataDict[CSVFields.CARD_NO];
+                newTrans.CardNo = dataDict[CsvFields.CARD_NO];
                 // Expired Date
-                newTrans.ExpireDate = dataDict[CSVFields.EXPIRED_DATE];
+                newTrans.ExpireDate = dataDict[CsvFields.EXPIRED_DATE];
                 // Transaction Amount
                 try
                 {
-                    newTrans.TransactionAmount = FormatterService.Instance.StringToDecimal(dataDict[CSVFields.TRANS_AMT], 2);
+                    newTrans.TransactionAmount = FormatterService.Instance.StringToDecimal(dataDict[CsvFields.TRANS_AMT], 2);
                 }
                 catch (FormatException)
                 {
@@ -99,7 +100,7 @@ namespace TransactionLoader
                 // Transaction Date
                 try
                 {
-                    newTrans.TransactionDate = FormatterService.Instance.StringToDate(dataDict[CSVFields.TRANS_DATE]);
+                    newTrans.TransactionDate = FormatterService.Instance.StringToDate(dataDict[CsvFields.TRANS_DATE]);
                 }
                 catch (FormatException)
                 {
@@ -108,26 +109,26 @@ namespace TransactionLoader
                 // Transaction Time
                 try
                 {
-                    newTrans.TransactionTime = FormatterService.Instance.StringToTime(dataDict[CSVFields.TRANS_TIME]);
+                    newTrans.TransactionTime = FormatterService.Instance.StringToTime(dataDict[CsvFields.TRANS_TIME]);
                 }
                 catch (FormatException)
                 {
                     throw new FormatException("Invalid transaction time");
                 }
                 // CardType
-                if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_MASTER)
+                if (dataDict[CsvFields.CARD_TYPE] == CsvFormat.CARDTYPE_MASTER)
                 {
                     newTrans.CardType = CardType.MASTER;
                 }
-                else if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_VISA)
+                else if (dataDict[CsvFields.CARD_TYPE] == CsvFormat.CARDTYPE_VISA)
                 {
                     newTrans.CardType = CardType.VISA;
                 }
-                else if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_JCB)
+                else if (dataDict[CsvFields.CARD_TYPE] == CsvFormat.CARDTYPE_JCB)
                 {
                     newTrans.CardType = CardType.JCB;
                 }
-                else if (dataDict[CSVFields.CARD_TYPE] == CSVFormat.CARDTYPE_UNIONPAY)
+                else if (dataDict[CsvFields.CARD_TYPE] == CsvFormat.CARDTYPE_UNIONPAY)
                 {
                     newTrans.CardType = CardType.UNIONPAY;
                 }
