@@ -9,9 +9,10 @@ namespace TransactionLoader
     class TransactionLoader
     {
         private string filePath { get; set; }
-        public TransactionLoader(string filePath)
+        public TransactionLoader(string filePath, string configPath)
         {
             this.filePath = filePath;
+            ConfigManager.ConfigPath = configPath;
         }
 
         /// <summary>

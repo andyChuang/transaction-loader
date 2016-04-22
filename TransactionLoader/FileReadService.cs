@@ -17,12 +17,9 @@ namespace TransactionLoader
             {
                 return instance;
             }
-            set 
-            { 
-            }
         }
 
-        public string[] ReadTextFile(string filePath)
+        public string[] ReadTextFileIntoStringArray(string filePath)
         {
             try
             {
@@ -35,10 +32,21 @@ namespace TransactionLoader
             }
         }
 
-        public Byte[] ReadBytesFile(string filePath)
+        public string ReadTextFileIntoOneString(string filePath)
         {
-            // TODO: Implement it
-            return null;
+            try
+            {
+                string result = System.IO.File.ReadAllText(@filePath);
+                if (result.Length == 0)
+                {
+                    throw new Exception("Empty file.");
+                }
+                return result;
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new Exception("Config file not found.");
+            }
         }
     }
 }

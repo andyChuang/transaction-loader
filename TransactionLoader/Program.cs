@@ -10,12 +10,12 @@ namespace TransactionLoader
     {
         static void Main(string[] args)
         {
-            var transcation = LoadTransactionsFromChargeFile("charge.char");
+            var transcation = LoadTransactionsFromChargeFile("charge.csv", "format.config");
         }
 
-        static public List<Transaction> LoadTransactionsFromChargeFile(string FilePath)
+        static public List<Transaction> LoadTransactionsFromChargeFile(string filePath, string configPath)
         {
-            TransactionLoader transLoader = new TransactionLoader(FilePath);
+            TransactionLoader transLoader = new TransactionLoader(filePath, configPath);
             return transLoader.Convert();
         }   
     }

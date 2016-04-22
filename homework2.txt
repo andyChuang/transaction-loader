@@ -1,0 +1,44 @@
+上機考問題-1(續)
+
+需求變更來惹
+
+今天有家新的銀行，他們系統只能產出 Json 格式的請款檔。MBS Batch 必須支援 Json格式，以及多一種卡別銀聯卡。
+
+
+格式說明
+Json:
+- 以 .json 為副檔名命名，EX: xxxx.json
+- Json 格式定義
+
+
+    [
+      {
+        "DataSeq" : "99990000",
+        "TransactionType": "Sale",
+        "MerchantId" : "1111100000",
+        "CardNo" : "3504751285381250",
+        "ExpiredDate" : "2207",
+        "TransactionAmount" : "11.00",
+        "TransactionDate" : "2015/12/02",
+        "TransactionTime" : "12:02:02",
+        "CardType" : "VISA"
+      },
+      {
+        "DataSeq" : "99990001",
+        "TransactionType": "Refund",
+        "MerchantId" : "1111100000",
+        "CardNo" : "3504751285381250",
+        "ExpiredDate" : "2207",
+        "TransactionAmount" : "11.00",
+        "TransactionDate" : "2015/12/02",
+        "TransactionTime" : "12:02:02",
+        "CardType" : "MASTER"
+      }
+    ]
+
+
+銀聯卡
+
+在Cyber自訂格式中銀聯使用 ‘3’
+csv中銀聯使用 U
+json 中銀聯使用 UnionPay

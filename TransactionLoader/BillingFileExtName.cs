@@ -1,8 +1,9 @@
 ﻿namespace TransactionLoader
 {
-    public enum BillingFileExtName 
+    static class BillingFileExtName
     {
-        CHAR,
-        CSV
+        public static readonly string CHAR = "CHAR";
+        public static readonly string CSV = "CSV";
+        public static readonly string JSON = "JSON";
     }
 }
