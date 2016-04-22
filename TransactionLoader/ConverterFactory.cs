@@ -22,7 +22,7 @@ namespace TransactionLoader
         }
 
         /// <summary>
-        /// Get IConverter by filepath
+        /// Get converter instance by billing file path
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace TransactionLoader
                 string converterName = GetConverterNameFromConfig(extName);
                 object[] converterParams = new object[] { filePath };
 
-                Type converterType = FindClass(converterName);
+                Type converterType = FindProperClass(converterName);
                 return Activator.CreateInstance(converterType, converterParams) as IConverter;
             }
             catch (ArgumentException)
@@ -51,7 +51,12 @@ namespace TransactionLoader
             }            
         }
 
-        private Type FindClass(string converterName)
+        /// <summary>
+        /// Find proper class which implement IConverter and has specified class name
+        /// </summary>
+        /// <param name="converterName"></param>
+        /// <returns></returns>
+        private Type FindProperClass(string converterName)
         {
             string[] assemblies = Directory.GetFiles(System.Environment.CurrentDirectory, "*.dll");
             foreach (string assemblyPath in assemblies)

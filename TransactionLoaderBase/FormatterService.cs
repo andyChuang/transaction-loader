@@ -18,6 +18,12 @@ namespace TransactionLoaderBase
             }
         }
 
+        /// <summary>
+        /// Convert string format to decimal format
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="decimalPlaces"></param>
+        /// <returns></returns>
         public decimal StringToDecimal(string amount, int decimalPlaces)
         {
             amount = TrimPrefixZeroPadding(amount);
@@ -27,6 +33,11 @@ namespace TransactionLoaderBase
             return Decimal.Parse(newDecimal);
         }
 
+        /// <summary>
+        /// Convert string to date format
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         public DateTime StringToDate(string dateTime)
         {
             string year = dateTime.Substring(0, 4);
@@ -36,6 +47,11 @@ namespace TransactionLoaderBase
             return Convert.ToDateTime(newDateTime);
         }
 
+        /// <summary>
+        /// Convert string to time format
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         public DateTime StringToTime(string dateTime)
         {
             string hour = dateTime.Substring(0, 2);
@@ -45,6 +61,11 @@ namespace TransactionLoaderBase
             return Convert.ToDateTime(newDateTime);
         }
 
+        /// <summary>
+        /// Trim all zero appear in front
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         private string TrimPrefixZeroPadding(string data)
         {
             return data.TrimStart(new char[] { '0' });

@@ -14,6 +14,9 @@ namespace TransactionLoaderBase
             this.ErrorMsg = errorMsg;
         }
 
+        /// <summary>
+        /// Tell the world what happened
+        /// </summary>
         public void WhatHappenedBaby()
         {
             Console.WriteLine(this.ErrorMsg);

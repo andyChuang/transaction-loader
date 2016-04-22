@@ -19,6 +19,11 @@ namespace TransactionLoaderBase
             }
         }
 
+        /// <summary>
+        /// Read text file and return a string array
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public string[] ReadTextFileIntoStringArray(string filePath)
         {
             try
@@ -32,6 +37,11 @@ namespace TransactionLoaderBase
             }
         }
 
+        /// <summary>
+        /// Read text file and merged all content into a string
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public string ReadTextFileIntoOneString(string filePath)
         {
             try

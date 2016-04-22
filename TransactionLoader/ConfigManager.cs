@@ -25,7 +25,10 @@ namespace TransactionLoader
             get;
             set;
         }
-
+        /// <summary>
+        /// Get config with json format
+        /// </summary>
+        /// <returns></returns>
         public static List<Dictionary<string, string>> GetConfigs()
         {  
             try
